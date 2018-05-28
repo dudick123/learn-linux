@@ -1,0 +1,133 @@
+me>
+<dirname>
+find path -name filename
+
+pwd
+cd dir1
+ls
+cat file3
+cd ..
+find / -name file3
+--find a file and pipe the output to the cat command
+find . -name 'file3' | xargs cat
+
+clear - clear the terminal screen
+-------------------------------------------------------------
+	$clear
+
+ls - list directory contents
+-------------------------------------------------------------
+	$ls -l 			#list the contents of the current directory in long format
+	$ls -A			#list the contents of the current director showing hidden files
+	$ls -r			#list the contents of the current directory sorting by filename in reverse order
+	$ls -R			#recusrively list the contents of the directory and sub directories
+	$ls -t			#list the contents of the current directory sorting by time
+	$ls -d			#list the contents of the current directory sorting by date
+	$ls -lR			#recusrively list the contents of the directory and sub directories in long format	
+	$ls -lR			#recusrively list the contents of the directory and sub directories in long format and pipe it to the more command;
+	
+cd - change directory
+-------------------------------------------------------------
+	$cd .				#go to the current directory
+	$cd ..				#move up the directory tree one level
+	$cd <dirname>/		#move further down the directory tree
+	$cd dir1/		
+	$cd /<dirname>		#move to the absolute path
+	$cd /bin
+	
+pwd - print name of current/working directory
+-------------------------------------------------------------
+	$pwd
+
+cp - copy files and directories
+------------------------------------------------------------
+	$ cp <filename>	./<dirname>/<filename>					#copy <filename> to path <dirname>/<filename>
+	$ cp copy-this-file.txt ./web-data/copied-file.txt		#
+	$ cp <dirname1> ./<dirname2>							#recursivley copy the directory and files from <dirname1> to <dirname2>
+	$ cp d/ ./web-data										
+	
+mv - mv - move (rename) files
+------------------------------------------------------------
+
+cat - concatenate files and print on the standard output
+-------------------------------------------------------------
+	$ cat <filename>				#view the contents of the file
+	$ cat zebrafile.txt
+	$ cat <dirname>/<filename>		#view the contents contents of the file within the directory
+	$ cat mydir/file3
+
+touch - change file timestamps
+-------------------------------------------------------------
+	$ touch <filename>				#create of alter the  file
+	$ touch testfile.txt			
+	$ touch <dirname>/<filename>	#create or alter the file and the directory path
+	$ touch mydir/mydirfile.txt
+	
+echo - display a line of text
+-------------------------------------------------------------
+	$ echo foo						#echo the contents to the command prompt
+
+find - search for files in a directory hierarchy
+-------------------------------------------------------------
+	$ find -name <query>						#looking in the current path and all sub directories, find all files matching exactly the query
+	$ find -name "zebra.txt"					#qoutation marks are optional
+	$ find -name "*<query>*"					#looking in the current path and all sub directories, find all files matching the query with wildcard (*) pattern
+	$ find -name "*config*"	
+	$ find <path> -name "*<query>*"				#starting in the current directory (pwd), find all files matching the query with wildcard (*) pattern
+	$ find ./d -name *config*
+	$ find <path> -name "<query>*"				#looking in a specific path, find all files matching the query with wildcard (*) pattern
+	$ find ./d -name *config*	
+	$ find / -name <query>						#search the entire files system and find all files matching the query	
+	$ find / -name "plugin.config"				
+	
+mkdir - make directories
+-------------------------------------------------------------
+	$ mkdir <dirname>							#within the current directory, make a directory named <dirname>
+	$ mkdir web-data							
+
+rmdir - remove empty directories 
+-------------------------------------------------------------
+	$rmdir <dirname>							#within the current directory, remove the directory <dirname>. <dirname> must be empty.
+	$rmdir web-data								#error you get if the directory is not empty -> rmdir: failed to remove ‘web-data/’: Directory not empty
+	$rmdir <path1>/<path2>						#remove directory at an absolute path			
+	$rmdir linuxpocketguide/web-data/
+
+mv - move (rename) files
+-------------------------------------------------------------
+
+
+rm - remove files or directories
+-------------------------------------------------------------
+	$rm <dirname>							#within the current directory, remove the directory <dirname>. <dirname> must be empty.
+	$rm web-data							#error you get if the directory is not empty -> cannot remove ‘web-data/’: Is a directory
+	$rm <filename>							#delete the file <filename>
+	$rm keep-from-delete.txt	
+	$rm <dirname> -r						#recursively delete the named directory and all folders and files it contains 
+	$rm /web-data -r	
+
+more - file perusal filter for crt viewing
+-------------------------------------------------------------
+	$more <filename>						#use more command to page through text of  <filename>
+	$more hipster-lorem.txt					
+	
+less - opposite of more
+-------------------------------------------------------------
+	$less <filename>						#use less command to page through text of  <filename>
+	$less hipster-lorem.txt					
+	
+head - output the first part of files
+-------------------------------------------------------------
+	$head <filename>						#use head command to view to top portion of <filename>
+	$head hipster-lorem.txt					
+	
+tail - output the last part of files
+-------------------------------------------------------------
+	$tail <filename>						#use tail command to view to top portion of <filename>
+	$tail hipster-lorem.txt		
+	
+grep - print lines matching a pattern
+-------------------------------------------------------------
+
+xargs - build and execute command lines from standard input
+-------------------------------------------------------------
+
