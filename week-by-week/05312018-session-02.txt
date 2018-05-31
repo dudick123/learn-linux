@@ -1,15 +1,3 @@
-me>
-<dirname>
-find path -name filename
-
-pwd
-cd dir1
-ls
-cat file3
-cd ..
-find / -name file3
---find a file and pipe the output to the cat command
-find . -name 'file3' | xargs cat
 
 clear - clear the terminal screen
 -------------------------------------------------------------
