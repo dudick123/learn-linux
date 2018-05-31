@@ -13,26 +13,26 @@ find . -name 'file3' | xargs cat
 
 clear - clear the terminal screen
 -------------------------------------------------------------
-	$clear
+	$ clear
 
 ls - list directory contents
 -------------------------------------------------------------
-	$ls -l 			#list the contents of the current directory in long format
-	$ls -A			#list the contents of the current director showing hidden files
-	$ls -r			#list the contents of the current directory sorting by filename in reverse order
-	$ls -R			#recusrively list the contents of the directory and sub directories
-	$ls -t			#list the contents of the current directory sorting by time
-	$ls -d			#list the contents of the current directory sorting by date
-	$ls -lR			#recusrively list the contents of the directory and sub directories in long format	
-	$ls -lR			#recusrively list the contents of the directory and sub directories in long format and pipe it to the more command;
+	$ ls -l 			#list the contents of the current directory in long format
+	$ ls -A			#list the contents of the current director showing hidden files
+	$ ls -r			#list the contents of the current directory sorting by filename in reverse order
+	$ ls -R			#recusrively list the contents of the directory and sub directories
+	$ ls -t			#list the contents of the current directory sorting by time
+	$ ls -d			#list the contents of the current directory sorting by date
+	$ ls -lR		#recusrively list the contents of the directory and sub directories in long format	
+	$ ls -lR		#recusrively list the contents of the directory and sub directories in long format and pipe it to the more command;
 	
 cd - change directory
 -------------------------------------------------------------
 	$cd .				#go to the current directory
 	$cd ..				#move up the directory tree one level
-	$cd <dirname>/		#move further down the directory tree
+	$cd <dirname>/			#move further down the directory tree
 	$cd dir1/		
-	$cd /<dirname>		#move to the absolute path
+	$cd /<dirname>			#move to the absolute path
 	$cd /bin
 	
 pwd - print name of current/working directory
@@ -41,26 +41,31 @@ pwd - print name of current/working directory
 
 cp - copy files and directories
 ------------------------------------------------------------
-	$ cp <filename>	./<dirname>/<filename>					#copy <filename> to path <dirname>/<filename>
-	$ cp copy-this-file.txt ./web-data/copied-file.txt		#
-	$ cp <dirname1> ./<dirname2>							#recursivley copy the directory and files from <dirname1> to <dirname2>
+	$ cp <filename>	./<dirname>/<filename>			#copy <filename> to path <dirname>/<filename>
+	$ cp copy-this-file.txt ./web-data/copied-file.txt	
+	$ cp <dirname1> ./<dirname2>				#recursivley copy the directory and files from <dirname1> to <dirname2>
 	$ cp d/ ./web-data										
 	
 mv - mv - move (rename) files
 ------------------------------------------------------------
+	$ mv <filename> <newfilename>		#copy the file within the current directory
+	$ mv zebra.txt giraffe.txt
+	$ mv <dirname1>/<filename1> <dirname2>/<filename2>
+	$ mv /home/thedudicks/learn-linux/file-to-move.txt /home/thedudicks/linuxpocketguide/file-th
+ats-moved.txt
 
 cat - concatenate files and print on the standard output
 -------------------------------------------------------------
-	$ cat <filename>				#view the contents of the file
+	$ cat <filename>			#view the contents of the file
 	$ cat zebrafile.txt
 	$ cat <dirname>/<filename>		#view the contents contents of the file within the directory
 	$ cat mydir/file3
 
 touch - change file timestamps
 -------------------------------------------------------------
-	$ touch <filename>				#create of alter the  file
+	$ touch <filename>			#create of alter the  file
 	$ touch testfile.txt			
-	$ touch <dirname>/<filename>	#create or alter the file and the directory path
+	$ touch <dirname>/<filename>		#create or alter the file and the directory path
 	$ touch mydir/mydirfile.txt
 	
 echo - display a line of text
@@ -82,19 +87,15 @@ find - search for files in a directory hierarchy
 	
 mkdir - make directories
 -------------------------------------------------------------
-	$ mkdir <dirname>							#within the current directory, make a directory named <dirname>
+	$ mkdir <dirname>					#within the current directory, make a directory named <dirname>
 	$ mkdir web-data							
 
 rmdir - remove empty directories 
 -------------------------------------------------------------
-	$rmdir <dirname>							#within the current directory, remove the directory <dirname>. <dirname> must be empty.
-	$rmdir web-data								#error you get if the directory is not empty -> rmdir: failed to remove ‘web-data/’: Directory not empty
-	$rmdir <path1>/<path2>						#remove directory at an absolute path			
+	$rmdir <dirname>			#within the current directory, remove the directory <dirname>. <dirname> must be empty.
+	$rmdir web-data				#error you get if the directory is not empty -> rmdir: failed to remove ‘web-data/’: Directory not empty
+	$rmdir <path1>/<path2>			#remove directory at an absolute path			
 	$rmdir linuxpocketguide/web-data/
-
-mv - move (rename) files
--------------------------------------------------------------
-
 
 rm - remove files or directories
 -------------------------------------------------------------
@@ -103,7 +104,14 @@ rm - remove files or directories
 	$rm <filename>							#delete the file <filename>
 	$rm keep-from-delete.txt	
 	$rm <dirname> -r						#recursively delete the named directory and all folders and files it contains 
-	$rm /web-data -r	
+	$rm /web-data -r
+	
+tree - list contents of directories in a tree-like format.
+---------------------------------------------------------
+	$ tree						#within the current directory, list directories and files
+	$ tree -d					#within the current directory, list directories only
+	$ tree -C					#colorize output
+	$ tree -Cd thedudicks/linuxpocketguide/		#colorize and list directories of a specific path	
 
 more - file perusal filter for crt viewing
 -------------------------------------------------------------
@@ -125,9 +133,3 @@ tail - output the last part of files
 	$tail <filename>						#use tail command to view to top portion of <filename>
 	$tail hipster-lorem.txt		
 	
-grep - print lines matching a pattern
--------------------------------------------------------------
-
-xargs - build and execute command lines from standard input
--------------------------------------------------------------
-
