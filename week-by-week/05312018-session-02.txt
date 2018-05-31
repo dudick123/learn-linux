@@ -13,6 +13,8 @@ ls - list directory contents
 	$ ls -d			#list the contents of the current directory sorting by date
 	$ ls -lR		#recusrively list the contents of the directory and sub directories in long format	
 	$ ls -lR		#recusrively list the contents of the directory and sub directories in long format and pipe it to the more command;
+	 --sort=WORD
+              sort by WORD instead of name: none (-U), size (-S), time (-t), version (-v), extension (-X)
 	
 cd - change directory
 -------------------------------------------------------------
