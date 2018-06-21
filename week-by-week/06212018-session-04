@@ -69,6 +69,12 @@ Access: 2018-06-21 00:21:47.661704939 +0000
 Modify: 2018-06-14 12:34:12.712123652 +0000
 Change: 2018-06-14 12:34:12.712123652
 
+chown + chgroup + chmod < setfacl
+
+but we are going to go through chown, chgroup and chmod for understanding
+
+getfacl/setfacl is dependent on the file system and is part of the current CentOS vesion we are using.
+
 chown - change file owner and group
 ----------------------
 
