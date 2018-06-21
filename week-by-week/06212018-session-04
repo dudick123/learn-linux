@@ -1,16 +1,32 @@
 Commands
 
-ls -l
-chmod
-chown
-chgroup
-stat
-umask
-id
+Review
+--------------------
+man command-name
+command-name --help
+clear - clear the terminal screen
+ls - list directory contents
+pwd - print the working directory
+cd - directory navigation
+cp - copy files and directories
+mv - move or rename a file
+rm - remove a file
+mkdir - make a directory
+echo - echo back to the terminal screen
+more - page through terminal output line-by-line or page-by-page
+less - same as more, but more flexible
+tail - view the last 10 lines of output or a file
+head - view the first 10 lines of output or a file
+!$ - rexecute the last terminal command
+
+New Commands
+stat - display file or system status
+chmod -change file mode bits
+chown - change file owner and group
+chgroup - change group ownership
+umask - change default access properties
 getfacl - For  each file, getfacl displays the file name, owner, the group, and the Access Control List (ACL). get file access control lists
 setfacl - This utility sets Access Control Lists (ACLs) of files and directories; set file access control lists
-shutdown
-reboot - Reboot the machine, regardless of which one of the three commands is invoked.
 
 https://www.thegeekstuff.com/2010/06/chmod-command-examples/
 
