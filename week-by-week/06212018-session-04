@@ -28,9 +28,9 @@ stat - display file or system status
 chown - change file owner and group
 chgroup - change group ownership
 chmod - change file mode bits
-umask - change default access properties
 getfacl - For  each file, getfacl displays the file name, owner, the group, and the Access Control List (ACL). get file access control lists
 setfacl - This utility sets Access Control Lists (ACLs) of files and directories; set file access control lists
+umask - change default access properties
 
 get current users and groups
 ------------------------------
@@ -69,11 +69,28 @@ Access: 2018-06-21 00:21:47.661704939 +0000
 Modify: 2018-06-14 12:34:12.712123652 +0000
 Change: 2018-06-14 12:34:12.712123652
 
-chown + chgroup + chmod < setfacl
+stat -c %A /home/thedudicks/linuxpocketguide/web-data - view in symbolic notation
+
+stat -c %a /home/thedudicks/linuxpocketguide/web-data - view in octal notation
+
+chown + chgroup + chmod == linux ju-jitsu
+
+((chown + chgroup + chmod) x 2) < setfacl
+
+df -hT - check the file system type
+
+[thedudicks@centos-demos-01 /]$ df -hT
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/sda1      xfs        10G  1.9G  8.2G  19% /
+devtmpfs       devtmpfs  1.8G     0  1.8G   0% /dev
+tmpfs          tmpfs     1.8G     0  1.8G   0% /dev/shm
+tmpfs          tmpfs     1.8G   58M  1.7G   4% /run
+tmpfs          tmpfs     1.8G     0  1.8G   0% /sys/fs/cgroup
+tmpfs          tmpfs     354M     0  354M   0% /run/user/1000
 
 but we are going to go through chown, chgroup and chmod for understanding
 
-getfacl/setfacl is dependent on the file system and is part of the current CentOS vesion we are using.
+getfacl/setfacl is dependent on the file system and is part of the current CentOS vesion we are using. XFS filesystem, which is part of CentOS 7has linux ACLs baked-in. Earlier versions would require that it be added in.
 
 chown - change file owner and group
 ----------------------
@@ -81,6 +98,7 @@ chown - change file owner and group
 chown <username> tmpfile - change the user ownership of the tmpfile to the <username> user
 chown :<groupname> tmpfile - change the group ownership of the tmpfile to the <groupname> group 
 chown <username>:<groupname> tmpfile - change the user and group ownership of the tmpfile to <username> user and <groupname> group 
+chown -R <username>:<groupname> dirname/ - change user and group recursively over a directory
 
 chgroup - change group ownership
 ---------------------
@@ -88,8 +106,6 @@ chgroup - change group ownership
 
 chmod - change file mode bits
 ---------------------
-
-
 
 https://www.thegeekstuff.com/2010/06/chmod-command-examples/
 
