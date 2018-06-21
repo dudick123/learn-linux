@@ -17,16 +17,73 @@ more - page through terminal output line-by-line or page-by-page
 less - same as more, but more flexible
 tail - view the last 10 lines of output or a file
 head - view the first 10 lines of output or a file
-!$ - rexecute the last terminal command
+cat - concatenate the file. view file contents
+touch - change timestamp or create a file
 
 New Commands
+!$ - rexecute the last terminal command
+cut - remove sections from each line, like powershell string.split()
+getent - get entries from the administrative database
 stat - display file or system status
-chmod -change file mode bits
 chown - change file owner and group
 chgroup - change group ownership
+chmod - change file mode bits
 umask - change default access properties
 getfacl - For  each file, getfacl displays the file name, owner, the group, and the Access Control List (ACL). get file access control lists
 setfacl - This utility sets Access Control Lists (ACLs) of files and directories; set file access control lists
+
+get current users and groups
+------------------------------
+cat /etc/passwd - view the metabase of users
+cat /etc/group - view the metabase of groups
+
+cut -d: -f1 /etc/passwd - get a list of current users. user the colon as the delimiter. grab the first item in the array
+cut -d: -f1 /etc/passwd - get a list of current users
+
+ls -l <filename-or-directory>
+-----------------------------
+[thedudicks@centos-demos-01 /]$ ls -l /home/thedudicks/linuxpocketguide/web-data
+total 28
+-rw-rw-r--. 1 thedudicks thedudicks 15286 May 28 11:52 copied-file.txt
+drwxr-xr-x. 2 thedudicks thedudicks    78 May 28 11:56 d
+-rwxr-----+ 1 thedudicks thedudicks    15 May 31 17:54 foo-file
+-rw-r--r--. 1 thedudicks thedudicks   308 May 31 17:55 host.bu.txt
+-rw-rw-r--. 1 thedudicks thedudicks    36 Jun 14 12:34 permissions
+[thedudicks@centos-demos-01 /]$ 
+
+1) directory or file
+2 - 4) user permissions
+5 - 7) group permissions
+8 - 10) other permissions
+
+stat -  display file or file system status
+---------------------
+stat /home/thedudicks/linuxpocketguide/web-data
+
+File: ‘/home/thedudicks/linuxpocketguide/web-data’
+  Size: 92              Blocks: 0          IO Block: 4096   directory
+Device: 801h/2049d      Inode: 17583504    Links: 3
+Access: (0760/drwxrw----)  Uid: ( 1000/thedudicks)   Gid: ( 1001/thedudicks)
+Context: unconfined_u:object_r:user_home_t:s0
+Access: 2018-06-21 00:21:47.661704939 +0000
+Modify: 2018-06-14 12:34:12.712123652 +0000
+Change: 2018-06-14 12:34:12.712123652
+
+chown - change file owner and group
+----------------------
+
+chown <username> tmpfile - change the user ownership of the tmpfile to the <username> user
+chown :<groupname> tmpfile - change the group ownership of the tmpfile to the <groupname> group 
+chown <username>:<groupname> tmpfile - change the user and group ownership of the tmpfile to <username> user and <groupname> group 
+
+chgroup - change group ownership
+---------------------
+
+
+chmod - change file mode bits
+---------------------
+
+
 
 https://www.thegeekstuff.com/2010/06/chmod-command-examples/
 
@@ -39,42 +96,76 @@ g is for group,
 and o is for others.
 Following are the symbolic representation of three different permissions:
 
-r is for read permission,
-w is for write permission,
-x is for execute permission.
+r is for read permission = 4 in octal,
+w is for write permission = 2 in octal,
+x is for execute permission = 1 in octal.
 Following are few examples on how to use the symbolic representation on chmod.
 
+examples
+---------------
 1. Add single permission to a file/directory
 Changing permission to a single set. + symbol means adding permission. For example, do the following to give execute permission for the user irrespective of anything else:
 
 $ chmod u+x filename
+
 2. Add multiple permission to a file/directory
 Use comma to separate the multiple permission sets as shown below.
 
 $ chmod u+r,g+x filename
+
 3. Remove permission from a file/directory
 Following example removes read and write permission for the user.
 
 $ chmod u-rx filename
+
 4. Change permission for all roles on a file/directory
 Following example assigns execute privilege to user, group and others (basically anybody can execute this file).
  
 $ chmod a+x filename
+
 5. Make permission for a file same as another file (using reference)
 If you want to change a file permission same as another file, use the reference option as shown below. In this example, file2’s permission will be set exactly same as file1’s permission.
 
 $ chmod --reference=file1 file2
+
 6. Apply the permission to all the files under a directory recursively
 Use option -R to change the permission recursively as shown below.
 
 $ chmod -R 755 directory-name/
+
 7. Change execute permission only on the directories (files are not affected)
 On a particular directory if you have multiple sub-directories and files, the following command will assign execute permission only to all the sub-directories in the current directory (not the files in the current directory).
 
 $ chmod u+X *
+
 Note: If the files has execute permission already for either the group or others, the above command will assign the execute permission to the user
 
+ACLs - getfacl & setfacl
+----------------------
+There are two types of ACLs: access ACLs and default ACLs. An access ACL is the access control list for a specific file or directory. A default ACL can only be associated with a directory; if a file within the directory does not have an access ACL, it uses the rules of the default ACL for the directory. Default ACLs are optional.
 
-$ setfacl -m u:lisa:r file
-Modify, for the user lisa, grant read access to 'file' 
+ACLs can be configured:
+
+Per user
+Per group
+Via the effective rights mask
+For users not in the user group for the file
+
+To determine the existing ACLs for a file or directory, use the getfacl command. In the example below, the getfacl is used to determine the existing ACLs for a file.
+
+getfacl home/john/picture.png
+
+The setfacl utility sets ACLs for files and directories. Use the -m option to add or modify the ACL of a file or directory:
+
+setfacl -m <rules> <files>
+Rules (<rules>) must be specified in the following formats. Multiple rules can be specified in the same command if they are separated by commas.
+
+setfacl -m u:andrius:rw /project/somefile
+To remove all the permissions for a user, group, or others, use the -x option and do not specify any permissions:
+
+setfacl -x <rules> <files>
+For example, to remove all permissions from the user with UID 500:
+
+setfacl -x u:500 /project/somefile
+
 
