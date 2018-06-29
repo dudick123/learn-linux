@@ -42,20 +42,24 @@ netstat -tupln
 11) sudo - execute a command as the superuser or another user, as specified by the security policy
 
 12) yum - yellow updater modified. rpm based, package manager
-$ref this https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7
 
-sudo yum install curl # install curl package. curl is a command line tool for issuing utl requests
+#we are going to install htop which is a better monitoring tool than top.
+sudo yum install epel-release #setup the third party package repository
+sudo yum install htop
+htop
 
-curl 127.0.0.1
-curl http://35.237.47.189/
-
+#install nginx
 sudo yum install nginx #nginx is a http server. faster and better than apache
 cat /etc/nginx/nginx.conf # view configuration file 
 
+#install curl
+sudo yum install curl # install curl package. curl is a command line tool for issuing utl requests
+
+#test our setup
 curl 127.0.0.1
 curl http://35.237.47.189/
 netstat -tulpn
-top
+htop
 
 13) systemd - system and service manager. acts as init system to userspace services
 
@@ -72,7 +76,7 @@ sudo systemctl disable application.service  # disable service
 curl 127.0.0.1 #check localhost
 curl http://35.237.47.189/ #check public ip
 netstat -tulpn #listening tcp and udp ports
-top #get system processes
+htop #get system processes
 sudo systemctl status nginx.service #get nginx service status
 sudo systemctl stop nginx.service #stop the service
 sudo systemctl status nginx.service #get nginx service status
