@@ -32,18 +32,34 @@ ip addr show
 ifconfig
 ifconfig -all
 
-9) top - display linux processes
+9) netstat - print network connections
 
-10) sudo - execute a command as the superuser or another user, as specified by the security policy
+netsat
+netstat -tupln
 
-11) yum - yellow updater modified. rpm based, package manager
+10) top - display linux processes
 
-sudo yum install nginx
+11) sudo - execute a command as the superuser or another user, as specified by the security policy
+
+12) yum - yellow updater modified. rpm based, package manager
+$ref this https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7
+
+sudo yum install curl # install curl package. curl is a command line tool for issuing utl requests
+
+curl 127.0.0.1
+curl http://35.237.47.189/
+
+sudo yum install nginx #nginx is a http server. faster and better than apache
 cat /etc/nginx/nginx.conf # view configuration file 
 
-12) systemd - system and service manager. acts as init system to userspace services
+curl 127.0.0.1
+curl http://35.237.47.189/
+netstat -tulpn
+top
 
-13) systemctl - contorl the systemd and system service manager
+13) systemd - system and service manager. acts as init system to userspace services
+
+14) systemctl - contorl the systemd and system service manager
 
 systemctl status application.service        # get service status
 sudo systemctl start application.service    # start service
@@ -52,6 +68,15 @@ sudo systemctl restart application.service  # restart service
 sudo systemctl reload application.service   # reload service configuration files
 sudo systemctl enable application.service   # enable service
 sudo systemctl disable application.service  # disable service 
+
+curl 127.0.0.1 #check localhost
+curl http://35.237.47.189/ #check public ip
+netstat -tulpn #listening tcp and udp ports
+top #get system processes
+sudo systemctl status nginx.service #get nginx service status
+sudo systemctl stop nginx.service #stop the service
+sudo systemctl status nginx.service #get nginx service status
+
 
 
 
