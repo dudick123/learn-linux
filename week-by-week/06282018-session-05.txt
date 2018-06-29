@@ -1,27 +1,49 @@
 
-1) who - show who is logged in
+1) who - show who is logged in; pts is pseudo terminal system
+
+who
 
 2) whoami - print effective userid
 
+whoami
+
 3) uname - print system information
+
+uname -a
 
 4) uptime - tell how long the system has been running
 
+uptime
+
 5) shutdown - halt, poweroff or reboot the machine
+
+shutdown -h now
 
 6) reboot - halt, poweroff or reboot the machine
 
+reboot -h now
+
 7) ip - show/manipulate routing, devices, policy routing and tunnels
+
+ip addr show
 
 8) ifconfig - configure a network interface
 
+ifconfig
+ifconfig -all
+
 9) top - display linux processes
 
-10) yum - yellow updater modified. rpm based, package manager
+10) sudo - execute a command as the superuser or another user, as specified by the security policy
 
-11) systemd - system and service manager. acts as init system to userspace services
+11) yum - yellow updater modified. rpm based, package manager
 
-12) systemctl - contorl the systemd and system service manager
+sudo yum install nginx
+cat /etc/nginx/nginx.conf # view configuration file 
+
+12) systemd - system and service manager. acts as init system to userspace services
+
+13) systemctl - contorl the systemd and system service manager
 
 systemctl status application.service        # get service status
 sudo systemctl start application.service    # start service
