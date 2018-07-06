@@ -44,6 +44,7 @@ netstat -tupln
 12) yum - yellow updater modified. rpm based, package manager
 
 #we are going to install htop which is a better monitoring tool than top.
+sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm #amazon rhel 7
 sudo yum install epel-release #setup the third party package repository
 sudo yum install htop
 htop
